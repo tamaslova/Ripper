@@ -1,9 +1,10 @@
 package quoters;
 
+import org.springframework.beans.factory.config.BeanPostProcessor;
+
 import java.lang.reflect.Field;
 import java.util.Random;
 import org.springframework.util.ReflectionUtils;
-import org.springframework.beans.factory.config.BeanPostProcessor;
 
 public class InjectRandomIntAnnotationBeanPostProcessor implements BeanPostProcessor{
 
@@ -20,6 +21,7 @@ public class InjectRandomIntAnnotationBeanPostProcessor implements BeanPostProce
                 int i = min + random.nextInt(max - min);
                 field.setAccessible(true);
                 ReflectionUtils.setField(field,bean,i);
+
             }
         }
 
