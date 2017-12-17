@@ -32,8 +32,9 @@ public class TerminatorQuoter implements Quoter {
     }
 
 
-    @PostConstruct
+    @PostProxy
     public void sayQuote(){
+        System.out.println("3rd phase");
         for (int i = 0; i< repeat; i++){
             System.out.println(message);
         }
