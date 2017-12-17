@@ -35,11 +35,12 @@ public class ProfilingHandlerBeanPostProcessor implements BeanPostProcessor {
     }
 
 
-    public Object postProcessAfterInitialization(Object bean, String beanName){
+    public Object postProcessAfterInitialization(final Object bean, String beanName){
 
         Class beanClass = map.get(beanName);
         if(beanClass != null){
             return Proxy.newProxyInstance(beanClass.getClassLoader(), beanClass.getInterfaces(), new InvocationHandler() {
+                @Override
                 public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                     if (controller.isEnabled()) {
                         System.out.println("Профилирую...");
