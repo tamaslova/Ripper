@@ -9,5 +9,5 @@ public class ProfilingController implements ProfilingControllerMBean{
         return enabled;
     }
 
-    private boolean enabled;
+    private boolean enabled = true;
 }
